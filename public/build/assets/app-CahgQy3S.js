@@ -1,0 +1,1 @@
+window.onload=function(){new Swiper(".client-swiper",{loop:!0,centeredSlides:!0,slidesPerView:1,spaceBetween:20,allowTouchMove:!0,navigation:{nextEl:".swiper-button-next",prevEl:".swiper-button-prev"},breakpoints:{600:{slidesPerView:3,spaceBetween:30,allowTouchMove:!1},1024:{slidesPerView:3,spaceBetween:40,allowTouchMove:!1}}})};
