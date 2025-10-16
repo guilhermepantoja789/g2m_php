@@ -11,12 +11,8 @@ class ClienteController extends Controller
 {
     public function index(): View
     {
-        // Pega todos os clientes do banco de dados
-        // Equivalente a Cliente.objects.all()
-        $clientes = Cliente::all();
-        // Retorna a view 'home' e passa a variável 'clientes' para ela
-        // Equivalente a render(request, 'home.html', {'clientes': clientes})
-        return view('home', ['clientes' => $clientes]);
+        $clientes = Cliente::latest()->get(); // Pega os clientes
+        return view('clientes.index', ['clientes' => $clientes]);
     }
 
 

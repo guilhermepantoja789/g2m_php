@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* Definição de Variáveis de Cor e Fontes */
 :root {
     --primary-color: #1e676d;

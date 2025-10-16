@@ -1,14 +1,25 @@
 <?php
 
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ClienteController;
 use Illuminate\Support\Facades\Route;
 
-// routes/web.php
-use App\Http\Controllers\ClienteController;
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+*/
 
-Route::get('/', [ClienteController::class, 'index'])->name('clientes.index'); // Adicionamos um nome à rota
+// Garante que a rota principal '/' chame o nosso HomeController.
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
-// Rota para mostrar o formulário de criação
-Route::get('/clientes/criar', [ClienteController::class, 'create'])->name('clientes.create');
+// Agrupa todas as rotas de gerenciamento de clientes sob o middleware de autenticação.
+Route::middleware('auth')->group(function () {
+    Route::get('/clientes', [ClienteController::class, 'index'])->name('clientes.index');
+    Route::get('/clientes/criar', [ClienteController::class, 'create'])->name('clientes.create');
+    Route::post('/clientes', [ClienteController::class, 'store'])->name('clientes.store');
+    Route::delete('/clientes/{cliente}', [ClienteController::class, 'destroy'])->name('clientes.destroy');
+});
 
-// Rota para salvar o novo cliente
-Route::post('/clientes', [ClienteController::class, 'store'])->name('clientes.store');
+// Carrega as rotas de autenticação (login, registro, logout) que o Breeze criou.
+require __DIR__.'/auth.php';
