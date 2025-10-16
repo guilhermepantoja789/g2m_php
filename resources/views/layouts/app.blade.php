@@ -6,6 +6,10 @@
     {{-- O título será dinâmico, com um padrão --}}
     <title>@yield('title', 'G2M Tecnologia')</title>
 
+    {{-- Favicon Links --}}
+    <link rel="icon" href="{{ asset('images/favicon.ico') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('images/favicon.ico') }}" type="image/x-icon">
+
     {{-- Fontes do Google --}}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
