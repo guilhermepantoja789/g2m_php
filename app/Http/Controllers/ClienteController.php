@@ -46,4 +46,18 @@ class ClienteController extends Controller
         // 5. Redireciona para a página inicial com uma mensagem de sucesso
         return redirect()->route('clientes.index');
     }
+    public function destroy(Cliente $cliente): RedirectResponse
+    {
+        // 1. Apaga a logo do storage, se ela existir
+        if ($cliente->logo) {
+            Storage::disk('public')->delete($cliente->logo);
+        }
+
+        // 2. Apaga o cliente do banco de dados
+        $cliente->delete();
+
+        // 3. Redireciona de volta para a lista com uma mensagem de sucesso
+        return redirect()->route('clientes.index')->with('sucesso', 'Cliente deletado com sucesso!');
+    }
+
 }
