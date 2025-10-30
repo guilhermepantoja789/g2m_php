@@ -6,6 +6,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Models\Cliente;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\Storage;
 
 class ClienteController extends Controller
 {
